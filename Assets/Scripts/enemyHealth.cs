@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class enemyHealth : MonoBehaviour
+{
+    // Start is called before the first frame update
+
+    public int enemyMaxHealth = 1000;
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
