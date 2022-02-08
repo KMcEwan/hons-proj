@@ -217,9 +217,17 @@ public class gunsController : MonoBehaviour
             SMGAmmoCountTMP.text = SMGBulletsLeftInMag.ToString() + "/" + SMGBulletCount;
         }
     }
-
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    Debug.Log(other.gameObject.name);
+    //}
     private void OnTriggerEnter(Collider other)
     {
+        //Debug.Log(other.gameObject.name);
+        //Debug.Log("parent");
+
+        // foreach(ContactPoint contact in other.con)
+
         if (other.gameObject.tag == "gunOne")
         {
             Debug.Log("gun one picked up");

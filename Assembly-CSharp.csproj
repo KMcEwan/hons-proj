@@ -54,10 +54,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\playerController.cs" />
-    <Compile Include="Assets\Scripts\clockController.cs" />
-    <Compile Include="Assets\Scripts\cameraController.cs" />
-    <Compile Include="Assets\Scripts\gunsController.cs" />
     <Compile Include="Assets\Scripts\enemyHealth.cs" />
+    <Compile Include="Assets\Scripts\gunsController.cs" />
+    <Compile Include="Assets\Scripts\clockController.cs" />
+    <Compile Include="Assets\Scripts\audioColliderForCollision.cs" />
+    <Compile Include="Assets\Scripts\cameraController.cs" />
+    <Compile Include="Assets\Scripts\enemyAudioCollision.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -11,8 +11,9 @@ public class playerController : MonoBehaviour
 
 
     //player movement
-    [SerializeField]
-    private float movementSpeed = 5f;
+    public float movementSpeed = 10f;
+
+
     Rigidbody rb;
     Vector3 playersForwardDirection;
     Vector3 playersRightDirection;
@@ -24,6 +25,7 @@ public class playerController : MonoBehaviour
     //Layer mask for camera to mouse 
     int ignoreLayerMask = 1 << 7;
 
+    audioColliderForCollision audioCollider;
 
 
     void Start()
@@ -34,6 +36,7 @@ public class playerController : MonoBehaviour
         playersForwardDirection = Vector3.Normalize(playersForwardDirection);
         playersRightDirection = Quaternion.Euler(new Vector3(0, 90, 0)) * playersForwardDirection;
         rb = GetComponent<Rigidbody>();
+
     }
 
     void Update()
@@ -43,17 +46,13 @@ public class playerController : MonoBehaviour
             characterMovement();
         }
 
-   
-
         // RAYCAST FOR PLAYER POINTING FORWARD
         Ray playerForwardRay = new Ray(transform.position, transform.forward);
         RaycastHit playerForwardHit;
         Debug.DrawRay(transform.position, transform.forward, Color.magenta);
         if (Physics.Raycast(playerForwardRay, out playerForwardHit, Mathf.Infinity))
         {
-            lastObjectHit = playerForwardHit.transform.gameObject;
-          
-            //Debug.Log(lastObjectHit.name);
+            lastObjectHit = playerForwardHit.transform.gameObject;         
         }
 
        // Debug.Log("Ray hit : " + lastObjectHit);
@@ -70,24 +69,20 @@ public class playerController : MonoBehaviour
             transform.LookAt(new Vector3(worldPosition.x, transform.position.y, worldPosition.z));
             Debug.Log(camToMouseHitData);
         }
-
-
-        if(Input.GetKey(KeyCode.E))
-        {
-            GetComponent<SphereCollider>().radius = 5;
-        }
-        else
-        {
-            GetComponent<SphereCollider>().radius = 2;
-        }
-
+      
     }
     void characterMovement()
     {
+        if(audioCollider.isCrouched)
+        {
+            movementSpeed = 5.0f;
+        }
+
+
         Vector3 ActualSpeed = playersRightDirection * Input.GetAxis("Horizontal") + playersForwardDirection * Input.GetAxis("Vertical");
         ActualSpeed = Vector3.ClampMagnitude(ActualSpeed, 1);
         rb.AddForce(ActualSpeed * movementSpeed, ForceMode.Force);
     }
 
-   
+
 }
