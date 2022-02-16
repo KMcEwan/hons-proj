@@ -25,9 +25,7 @@ public class clockController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        day += Time.deltaTime / inGameDayLength;        // 1 day = inGameDayLength 
-       
-        float dayLengthNormalised = day % 1f;
+        day += Time.deltaTime / inGameDayLength;        
 
         hours = Mathf.Floor(day * hoursInDay).ToString("00");
         minutes = Mathf.Floor(((day * hoursInDay) % 1f) * minsInHour).ToString("00");

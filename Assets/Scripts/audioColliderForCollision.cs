@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class audioColliderForCollision : MonoBehaviour
 {
-
+    [SerializeField] private Animator animationController;
     public bool isCrouched;
     public bool isRunning;
 

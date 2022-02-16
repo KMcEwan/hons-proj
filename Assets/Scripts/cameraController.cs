@@ -20,6 +20,9 @@ public class cameraController : MonoBehaviour
 
     Ray cameraToPlayerRay;
 
+
+
+
     void Start()
     {
        
@@ -28,6 +31,8 @@ public class cameraController : MonoBehaviour
 
     void Update()
     {
+
+
         cameraToPlayerRay = new Ray(camera.transform.position, (player.transform.position - camera.transform.position).normalized);
         RaycastHit[] hits;
         hits = Physics.RaycastAll(cameraToPlayerRay, 1000);

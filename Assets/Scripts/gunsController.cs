@@ -55,6 +55,10 @@ public class gunsController : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI SMGAmmoCountTMP;
 
+    //Animations
+
+    [SerializeField] private Animator animationController;
+
     // Update is called once per frame
 
     void Update()
@@ -107,6 +111,8 @@ public class gunsController : MonoBehaviour
                 SMGObject.SetActive(false);
                 Debug.Log(pistolActive.ToString());
                 Debug.Log(SMGActive.ToString());
+                animationController.SetLayerWeight(0, 0);
+                animationController.SetLayerWeight(1, 1);
             }
 
         }
@@ -120,6 +126,8 @@ public class gunsController : MonoBehaviour
                 SMGObject.SetActive(true);
                 Debug.Log(pistolActive.ToString());
                 Debug.Log(SMGActive.ToString());
+                animationController.SetLayerWeight(0, 0);
+                animationController.SetLayerWeight(1, 1);
             }
 
         }

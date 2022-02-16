@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
-    - Assets/Scripts/audioColliderForCollision.cs
+    - Assets/Scripts/playerController.cs
+    - Assets/animations/animationController.controller
     - 
-    m_Values: 0000
-  RevisionSummary: 
+    m_Values: 010101
+  RevisionSummary: 'AS Movement added
+
+'
   ChangesSearchValue: 
   SelectedHistoryRevision: 
   HistoryPageNumber: 0
