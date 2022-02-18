@@ -20,10 +20,10 @@ public class gunsController : MonoBehaviour
 
 
     //Player & gun properties
-    bool hasPistol;
-    bool hasSMG;
-    bool pistolActive;
-    bool SMGActive;
+    internal bool hasPistol;
+    internal bool hasSMG;
+    internal bool pistolActive;
+    internal bool SMGActive;
     int pistolBulletCount = 0;
     int SMGBulletCount = 0;
     int pistolMagSize = 8;
@@ -58,6 +58,11 @@ public class gunsController : MonoBehaviour
     //Animations
 
     [SerializeField] private Animator animationController;
+
+    // Gun for animations
+    [SerializeField] private GameObject noGunTorch;
+    [SerializeField] private GameObject uziGunTorch;
+    [SerializeField] private GameObject pistolGunTorch;
 
     // Update is called once per frame
 
@@ -105,14 +110,23 @@ public class gunsController : MonoBehaviour
         {
             if (hasPistol)
             {
+                noGunTorch.SetActive(false);
+                uziGunTorch.SetActive(false);
+                pistolGunTorch.SetActive(true);
+                animationController.SetLayerWeight(2, 0);
+                animationController.SetBool("hasSMG", false);
+                animationController.SetBool("hasSMG", false);
                 pistolActive = true;
                 SMGActive = false;
                 pistolObject.SetActive(true);
                 SMGObject.SetActive(false);
-                Debug.Log(pistolActive.ToString());
-                Debug.Log(SMGActive.ToString());
                 animationController.SetLayerWeight(0, 0);
                 animationController.SetLayerWeight(1, 1);
+                animationController.SetBool("hasPistol", true);
+                animationController.SetBool("hasSMG", false);
+                pistolImage.GetComponent<Image>().color = Color.red;
+                SMGImage.GetComponent<Image>().color = Color.white;
+
             }
 
         }
@@ -120,14 +134,23 @@ public class gunsController : MonoBehaviour
         {
             if (hasSMG)
             {
+
+                noGunTorch.SetActive(false);
+                uziGunTorch.SetActive(true);
+                pistolGunTorch.SetActive(false);
+                animationController.SetLayerWeight(2, 0);
+                animationController.SetBool("hasSMG", false);
+                animationController.SetBool("hasSMG", false);
                 pistolActive = false;
                 SMGActive = true;
                 pistolObject.SetActive(false);
                 SMGObject.SetActive(true);
-                Debug.Log(pistolActive.ToString());
-                Debug.Log(SMGActive.ToString());
                 animationController.SetLayerWeight(0, 0);
                 animationController.SetLayerWeight(1, 1);
+                animationController.SetBool("hasSMG", true);
+                animationController.SetBool("hasPistol", false);
+                pistolImage.GetComponent<Image>().color = Color.white;
+                SMGImage.GetComponent<Image>().color = Color.red;
             }
 
         }

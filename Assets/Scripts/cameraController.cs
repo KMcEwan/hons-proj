@@ -53,7 +53,7 @@ public class cameraController : MonoBehaviour
 
         if (minDistanceObject.gameObject.tag == "player")
         {
-            Debug.Log("objects  =  player");
+           // Debug.Log("objects  =  player");
         }
         else
         {

@@ -14,13 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
-    - Assets/Scripts/playerController.cs
+    - Assets/Materials/medkit.mat
+    - Assets/Materials/medkit.mat.meta
+    - Assets/Scenes/SampleScene.unity
+    - Assets/Textures/med kit.png
+    - Assets/Textures/med kit.png.meta
+    - Assets/Textures/medkitEmissive.png
+    - Assets/Textures/medkitEmissive.png.meta
     - Assets/animations/animationController.controller
+    - Assets/animations/pistol Hold.fbx
+    - Assets/animations/pistol Hold.fbx.meta
+    - Assets/animations/smg hold.fbx
+    - Assets/animations/smg hold.fbx.meta
+    - Assets/animations/torch Mask.mask
+    - Assets/animations/torch Mask.mask.meta
+    - Assets/animations/torch.fbx
+    - Assets/animations/torch.fbx.meta
+    - Assets/objects/medkit.fbx
+    - Assets/objects/medkit.fbx.meta
     - 
-    m_Values: 010101
-  RevisionSummary: 'AS Movement added
-
-'
+    m_Values: 01010101010101010101010101010101010101
+  RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 
   HistoryPageNumber: 0

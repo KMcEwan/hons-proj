@@ -29,15 +29,13 @@ public class playerController : MonoBehaviour
     public audioColliderForCollision audioCollider;
 
 
-
+    [SerializeField] private gunsController gunController;
 
 
     void Start()
     {
         //Player movement
         playersForwardDirection = Camera.main.transform.forward;                                                        // player uses the cameras forward direction rather than the forward vector of the scene
-    
-        Debug.Log(Camera.main.transform.forward);
         playersForwardDirection.y = 0;
         playersForwardDirection = Vector3.Normalize(playersForwardDirection);
         playersRightDirection = Quaternion.Euler(new Vector3(0, 90, 0)) * playersForwardDirection;
@@ -60,6 +58,7 @@ public class playerController : MonoBehaviour
         float playerYNorm = playerYPos / 100f;
        //Debug.Log(playerYNorm);
 
+
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
         {
             animationController.SetFloat("WD_movement", playerYNorm);
@@ -69,6 +68,7 @@ public class playerController : MonoBehaviour
             animationController.SetFloat("S_movement", -0.1f);
             animationController.SetFloat("AS_movement", -0.1f);
             animationController.SetFloat("A_movement", -0.1f);
+            animationController.SetFloat("WA_movement", -0.1f);
         }
         else
         if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
@@ -80,6 +80,7 @@ public class playerController : MonoBehaviour
             animationController.SetFloat("S_movement", -0.1f);
             animationController.SetFloat("AS_movement", -0.1f);
             animationController.SetFloat("A_movement", -0.1f);
+            animationController.SetFloat("WA_movement", -0.1f);
         }
         else
         if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
@@ -91,6 +92,19 @@ public class playerController : MonoBehaviour
             animationController.SetFloat("S_movement", -0.1f);
             animationController.SetFloat("DS_movement", -0.1f);
             animationController.SetFloat("A_movement", -0.1f);
+            animationController.SetFloat("WA_movement", -0.1f);
+        }
+        else
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+            animationController.SetFloat("WA_movement", playerYNorm);
+            animationController.SetFloat("WD_movement", -0.1f);
+            animationController.SetFloat("W_movement", -0.1f);
+            animationController.SetFloat("D_movement", -0.1f);
+            animationController.SetFloat("S_movement", -0.1f);
+            animationController.SetFloat("DS_movement", -0.1f);
+            animationController.SetFloat("A_movement", -0.1f);
+            animationController.SetFloat("AS_movement", -0.1f);
         }
         else
         if (Input.GetKey(KeyCode.W))
@@ -102,6 +116,7 @@ public class playerController : MonoBehaviour
             animationController.SetFloat("S_movement", -0.1f);
             animationController.SetFloat("AS_movement", -0.1f);
             animationController.SetFloat("A_movement", -0.1f);
+            animationController.SetFloat("WA_movement", -0.1f);
         }
         else
         if (Input.GetKey(KeyCode.D))
@@ -113,6 +128,7 @@ public class playerController : MonoBehaviour
             animationController.SetFloat("S_movement", -0.1f);
             animationController.SetFloat("AS_movement", -0.1f);
             animationController.SetFloat("A_movement", -0.1f);
+            animationController.SetFloat("WA_movement", -0.1f);
         }
         else
         if (Input.GetKey(KeyCode.S))
@@ -124,6 +140,7 @@ public class playerController : MonoBehaviour
             animationController.SetFloat("D_movement", -0.1f);
             animationController.SetFloat("AS_movement", -0.1f);
             animationController.SetFloat("A_movement", -0.1f);
+            animationController.SetFloat("WA_movement", -0.1f);
         }
         else
         if (Input.GetKey(KeyCode.A))
@@ -135,6 +152,7 @@ public class playerController : MonoBehaviour
             animationController.SetFloat("D_movement", -0.1f);
             animationController.SetFloat("AS_movement", -0.1f);
             animationController.SetFloat("S_movement", -0.1f);
+            animationController.SetFloat("WA_movement", -0.1f);
         }
         else
         {
@@ -145,6 +163,8 @@ public class playerController : MonoBehaviour
             animationController.SetFloat("DS_movement", -0.2f);
             animationController.SetFloat("AS_movement", -0.2f);
             animationController.SetFloat("A_movement", -0.2f);
+            animationController.SetFloat("S_movement", -0.2f);
+            animationController.SetFloat("WA_movement", -0.2f);
         }
 
 
@@ -167,7 +187,7 @@ public class playerController : MonoBehaviour
         {
             worldPosition = camToMouseHitData.point;
             transform.LookAt(new Vector3(worldPosition.x, transform.position.y, worldPosition.z));
-            Debug.Log(camToMouseHitData);
+            //Debug.Log(camToMouseHitData);
         }
       
     }
