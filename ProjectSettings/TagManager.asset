@@ -12,11 +12,13 @@ TagManager:
   - pistolAmmo
   - enemy
   - medkit
+  - postProcessing
+  - groundObjects
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - postProcessing
   - Water
   - UI
   - player
