@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class enemyAudioCollision : MonoBehaviour
 {
+
+   [SerializeField] enemyMovement enemyMovementScript;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +23,6 @@ public class enemyAudioCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("player sound detection");
+        enemyMovementScript.playerDetected = true;
     }
 }

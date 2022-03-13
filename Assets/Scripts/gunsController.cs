@@ -166,6 +166,7 @@ public class gunsController : MonoBehaviour
                 pistolFireNext = Time.time + pistolCooldown;
                 if (playerScript.lastObjectHit.tag.ToString() == "enemy")
                 {
+
                     GameObject objectHit = playerScript.lastObjectHit.gameObject;
                     enemyScript = objectHit.GetComponent<enemyHealth>();
                     enemyScript.enemyMaxHealth -= 10;
@@ -293,5 +294,10 @@ public class gunsController : MonoBehaviour
             SMGBulletCount += SMGAmmoSpawnCount;
             SMGAmmoCountTMP.text = SMGBulletsLeftInMag.ToString() + "/" + SMGBulletCount;
         }
+    }
+
+    private void OnMouseDown()
+    {
+        Debug.Log(gameObject.name);
     }
 }

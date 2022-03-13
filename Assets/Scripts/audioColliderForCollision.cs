@@ -22,6 +22,20 @@ public class audioColliderForCollision : MonoBehaviour
             isCrouched = !isCrouched;
         }
 
+        if(isCrouched)
+        {
+            colliderForAudio.radius = 1.0f;
+        }
+        else if(!isCrouched)
+        {
+            colliderForAudio.radius = 2.0f;
+        }
+
+        if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && isCrouched)
+        {
+            colliderForAudio.radius = 3.0f;
+        }
+        else 
         if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && Input.GetKey(KeyCode.LeftShift))
         {
             colliderForAudio.radius = 5.0f;
@@ -30,18 +44,8 @@ public class audioColliderForCollision : MonoBehaviour
         {
             colliderForAudio.radius = 4.0f;
         }
-        else if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && isCrouched)
-        {
-            colliderForAudio.radius = 3.0f;
-        }
-        else if (!isCrouched)
-        {
-            colliderForAudio.radius = 2.0f;
-        }
-        else if(isCrouched)
-        {
-            colliderForAudio.radius = 1.0f;
-        }
+
+
         
         //audioRadiusColliders = Physics.OverlapSphere(this.transform.position, radiusForAudio);
         //Debug.Log(radiusForAudio);

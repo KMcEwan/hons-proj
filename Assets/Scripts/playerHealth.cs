@@ -15,6 +15,10 @@ public class playerHealth : MonoBehaviour
 
     // text animation
     [SerializeField] private Animator healthAnimationController;
+
+
+    [SerializeField] float hitCooldown = 1.5f;
+    [SerializeField] float hitNext;
     void Start()
     {
 
@@ -77,11 +81,13 @@ public class playerHealth : MonoBehaviour
         if(health > 100)
         {
             health = 100;
+            healthCountUI.text = health.ToString();
         }
 
         if(health <= 0)
         {
             health = 0;
+            healthCountUI.text = health.ToString();
         }
     }
 
@@ -98,6 +104,17 @@ public class playerHealth : MonoBehaviour
             medpackCount++;
             medpackCountUI.text = medpackCount.ToString();
             healthCountUI.text = health.ToString();
+        }
+        else if(other.tag == "enemyHands")
+        {
+            if(Time.time > hitNext)
+            {
+                hitNext = Time.time + hitCooldown;
+                Debug.Log("enemy hit");
+                health -= 10;
+                healthCountUI.text = health.ToString();
+            }
+
         }
 
 

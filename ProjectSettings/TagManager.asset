@@ -14,6 +14,8 @@ TagManager:
   - medkit
   - postProcessing
   - groundObjects
+  - concrete
+  - enemyHands
   layers:
   - Default
   - TransparentFX
@@ -26,8 +28,8 @@ TagManager:
   - ignoreCamToMouseLayer
   - colliderForAudio
   - interactiveObjects
-  - 
-  - 
+  - enemyHitPlayer
+  - enemyLayerOnly
   - 
   - 
   - 
