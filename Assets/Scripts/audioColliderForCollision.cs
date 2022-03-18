@@ -24,16 +24,16 @@ public class audioColliderForCollision : MonoBehaviour
 
         if(isCrouched)
         {
-            colliderForAudio.radius = 1.0f;
+            colliderForAudio.radius = 0.5f;
         }
         else if(!isCrouched)
         {
-            colliderForAudio.radius = 2.0f;
+            colliderForAudio.radius = 1.5f;
         }
 
         if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && isCrouched)
         {
-            colliderForAudio.radius = 3.0f;
+            colliderForAudio.radius = 1.5f;
         }
         else 
         if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && Input.GetKey(KeyCode.LeftShift))
@@ -42,7 +42,7 @@ public class audioColliderForCollision : MonoBehaviour
         }
         else if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
-            colliderForAudio.radius = 4.0f;
+            colliderForAudio.radius = 3.0f;
         }
 
 

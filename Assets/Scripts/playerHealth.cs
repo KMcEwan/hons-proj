@@ -19,9 +19,14 @@ public class playerHealth : MonoBehaviour
 
     [SerializeField] float hitCooldown = 1.5f;
     [SerializeField] float hitNext;
+
+
+    // audio
+    [SerializeField] AudioClip playerDamaged;
+    AudioSource audioSource;
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -91,6 +96,12 @@ public class playerHealth : MonoBehaviour
         }
     }
 
+    void playerDamage()
+    {
+
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "medkit")
@@ -113,6 +124,10 @@ public class playerHealth : MonoBehaviour
                 Debug.Log("enemy hit");
                 health -= 10;
                 healthCountUI.text = health.ToString();
+                if(!audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(playerDamaged);
+                }
             }
 
         }

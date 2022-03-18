@@ -14,7 +14,7 @@ public class playerController : MonoBehaviour
     //player movement
     float movementSpeed = 1000f;
     float NormalMovementSpeed = 200;
-    float crouchMovementSpeed = 35;
+    float crouchMovementSpeed = 100;
     float runMovementSpeed = 300;
     Vector3 playersForwardDirection;
     Vector3 playersRightDirection;
@@ -50,6 +50,8 @@ public class playerController : MonoBehaviour
         playersRightDirection = Quaternion.Euler(new Vector3(0, 90, 0)) * playersForwardDirection;
         rb = GetComponent<Rigidbody>();
 
+
+        //hotSpot for cursor placement
         hotSpot = new Vector2(inactiveCursor.width / 2, inactiveCursor.height / 2);
 
     }
@@ -60,145 +62,6 @@ public class playerController : MonoBehaviour
         {
             characterMovement();
         }
-        //Debug.Log(playersForwardDirection);
-        //Debug.Log(playersRightDirection);
-
-
-        playerYPos = transform.rotation.eulerAngles.y;
-        float playerYNorm = playerYPos / 100f;
-        //Debug.Log(playerYNorm);
-
-
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
-        {
-            animationController.SetFloat("WD_movement", playerYNorm);
-            animationController.SetFloat("W_movement", -0.1f);
-            animationController.SetFloat("D_movement", -0.1f);
-            animationController.SetFloat("DS_movement", -0.1f);
-            animationController.SetFloat("S_movement", -0.1f);
-            animationController.SetFloat("AS_movement", -0.1f);
-            animationController.SetFloat("A_movement", -0.1f);
-            animationController.SetFloat("WA_movement", -0.1f);
-        }
-        else
-        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
-        {
-            animationController.SetFloat("DS_movement", playerYNorm);
-            animationController.SetFloat("WD_movement", -0.1f);
-            animationController.SetFloat("W_movement", -0.1f);
-            animationController.SetFloat("D_movement", -0.1f);
-            animationController.SetFloat("S_movement", -0.1f);
-            animationController.SetFloat("AS_movement", -0.1f);
-            animationController.SetFloat("A_movement", -0.1f);
-            animationController.SetFloat("WA_movement", -0.1f);
-        }
-        else
-        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
-        {
-            animationController.SetFloat("AS_movement", playerYNorm);
-            animationController.SetFloat("WD_movement", -0.1f);
-            animationController.SetFloat("W_movement", -0.1f);
-            animationController.SetFloat("D_movement", -0.1f);
-            animationController.SetFloat("S_movement", -0.1f);
-            animationController.SetFloat("DS_movement", -0.1f);
-            animationController.SetFloat("A_movement", -0.1f);
-            animationController.SetFloat("WA_movement", -0.1f);
-        }
-        else
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
-        {
-            animationController.SetFloat("WA_movement", playerYNorm);
-            animationController.SetFloat("WD_movement", -0.1f);
-            animationController.SetFloat("W_movement", -0.1f);
-            animationController.SetFloat("D_movement", -0.1f);
-            animationController.SetFloat("S_movement", -0.1f);
-            animationController.SetFloat("DS_movement", -0.1f);
-            animationController.SetFloat("A_movement", -0.1f);
-            animationController.SetFloat("AS_movement", -0.1f);
-        }
-        else
-        if (Input.GetKey(KeyCode.W))
-        {
-            animationController.SetFloat("W_movement", playerYNorm);
-            animationController.SetFloat("WD_movement", -0.1f);
-            animationController.SetFloat("D_movement", -0.1f);
-            animationController.SetFloat("DS_movement", -0.1f);
-            animationController.SetFloat("S_movement", -0.1f);
-            animationController.SetFloat("AS_movement", -0.1f);
-            animationController.SetFloat("A_movement", -0.1f);
-            animationController.SetFloat("WA_movement", -0.1f);
-        }
-        else
-        if (Input.GetKey(KeyCode.D))
-        {
-            animationController.SetFloat("D_movement", playerYNorm);
-            animationController.SetFloat("WD_movement", -0.1f);
-            animationController.SetFloat("W_movement", -0.1f);
-            animationController.SetFloat("DS_movement", -0.1f);
-            animationController.SetFloat("S_movement", -0.1f);
-            animationController.SetFloat("AS_movement", -0.1f);
-            animationController.SetFloat("A_movement", -0.1f);
-            animationController.SetFloat("WA_movement", -0.1f);
-        }
-        else
-        if (Input.GetKey(KeyCode.S))
-        {
-            animationController.SetFloat("S_movement", playerYNorm);
-            animationController.SetFloat("WD_movement", -0.1f);
-            animationController.SetFloat("W_movement", -0.1f);
-            animationController.SetFloat("DS_movement", -0.1f);
-            animationController.SetFloat("D_movement", -0.1f);
-            animationController.SetFloat("AS_movement", -0.1f);
-            animationController.SetFloat("A_movement", -0.1f);
-            animationController.SetFloat("WA_movement", -0.1f);
-        }
-        else
-        if (Input.GetKey(KeyCode.A))
-        {
-            animationController.SetFloat("A_movement", playerYNorm);
-            animationController.SetFloat("WD_movement", -0.1f);
-            animationController.SetFloat("W_movement", -0.1f);
-            animationController.SetFloat("DS_movement", -0.1f);
-            animationController.SetFloat("D_movement", -0.1f);
-            animationController.SetFloat("AS_movement", -0.1f);
-            animationController.SetFloat("S_movement", -0.1f);
-            animationController.SetFloat("WA_movement", -0.1f);
-        }
-        else
-        {
-            // Debug.Log("no key pressed");
-            animationController.SetFloat("WD_movement", -0.2f);
-            animationController.SetFloat("W_movement", -0.2f);
-            animationController.SetFloat("D_movement", -0.2f);
-            animationController.SetFloat("DS_movement", -0.2f);
-            animationController.SetFloat("AS_movement", -0.2f);
-            animationController.SetFloat("A_movement", -0.2f);
-            animationController.SetFloat("S_movement", -0.2f);
-            animationController.SetFloat("WA_movement", -0.2f);
-        }
-
-
-
-       // //RAYCAST FOR PLAYER POINTING FORWARD
-       //Vector3 originRaycast = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-       // Ray playerForwardRay = new Ray(originRaycast, transform.forward);
-       // RaycastHit playerForwardHit;
-
-       // Debug.DrawRay(originRaycast, transform.forward, Color.yellow);
-
-       // if (Physics.Raycast(playerForwardRay, out playerForwardHit, 10))
-       // {
-       //     lastObjectHit = playerForwardHit.transform.gameObject;
-       //     Debug.Log(lastObjectHit);
-       // }
-
-
-
-
-
-
-
-
 
         // RAYCAST FOR PLAYER LOOK AT MOUSE POS
         Ray camToMouse;
@@ -214,25 +77,43 @@ public class playerController : MonoBehaviour
 
         }
 
+        //test code
 
-        Vector3 worldPosition2;
+        Vector3 playerPosition = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+
+        // test code end
+
+
+        //RAYCAST OF CAMERA TO MOUSE POSITION
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    
         RaycastHit hitData;
+        RaycastHit hitDataToMouse;
         if (Physics.Raycast(ray, out hitData, 1000))
         {
-            worldPosition2 = hitData.point;
             Debug.Log(hitData.transform.gameObject.name);
             lastObjectHit = hitData.transform.gameObject;
+            worldPosition = hitData.point;
 
-            if (hitData.transform.gameObject.tag == "enemy")
+
+            if (Physics.Raycast(playerPosition, (worldPosition - playerPosition), out hitDataToMouse, 100))
             {
-                Debug.Log("enemy hit in cursor change");
-                Cursor.SetCursor(activeCursor, hotSpot, cursorMode);
+                Debug.Log(hitDataToMouse.transform.gameObject.tag);
+                if (gunController.pistolActive || gunController.SMGActive)
+                {
+                    if (hitData.transform.gameObject.tag == "enemy" && hitDataToMouse.transform.gameObject.tag == "enemy")
+                    {
+                        Debug.Log("enemy hit in cursor change");
+                        Cursor.SetCursor(activeCursor, hotSpot, cursorMode);
+                    }
+                    else
+                    {
+                        Cursor.SetCursor(inactiveCursor, hotSpot, cursorMode);
+                    }
+                }
             }
-            else
-            {
-                Cursor.SetCursor(inactiveCursor, hotSpot, cursorMode);
-            }
+            //Debug.Log(worldPosition);
+            Debug.DrawLine(playerPosition, worldPosition, Color.red);
         }
     }
 
@@ -243,10 +124,122 @@ public class playerController : MonoBehaviour
         Vector3 movementDirection = playersRightDirection * Input.GetAxis("Horizontal") + playersForwardDirection * Input.GetAxis("Vertical");
         movementDirection = Vector3.ClampMagnitude(movementDirection, 1);
         rb.AddForce(movementDirection * movementSpeed, ForceMode.Force);
+
+        playerYPos = transform.rotation.eulerAngles.y;
+        float playerYNorm = playerYPos / 100f;
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+        {
+            animationController.SetFloat("WD_movement", playerYNorm/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("W_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("D_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("DS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("S_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("AS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("A_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WA_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+        }
+        else
+     if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+        {
+            animationController.SetFloat("DS_movement", playerYNorm/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WD_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("W_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("D_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("S_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("AS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("A_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WA_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+        }
+        else
+     if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+        {
+            animationController.SetFloat("AS_movement", playerYNorm/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WD_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("W_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("D_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("S_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("DS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("A_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WA_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+        }
+        else
+     if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+            animationController.SetFloat("WA_movement", playerYNorm/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WD_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("W_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("D_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("S_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("DS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("A_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("AS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+        }
+        else
+     if (Input.GetKey(KeyCode.W))
+        {
+            animationController.SetFloat("W_movement", playerYNorm/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WD_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("D_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("DS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("S_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("AS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("A_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WA_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+        }
+        else
+     if (Input.GetKey(KeyCode.D))
+        {
+            animationController.SetFloat("D_movement", playerYNorm/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WD_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("W_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("DS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("S_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("AS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("A_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WA_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+        }
+        else
+     if (Input.GetKey(KeyCode.S))
+        {
+            animationController.SetFloat("S_movement", playerYNorm/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WD_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("W_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("DS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("D_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("AS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("A_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WA_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+        }
+        else
+     if (Input.GetKey(KeyCode.A))
+        {
+            animationController.SetFloat("A_movement", playerYNorm/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WD_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("W_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("DS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("D_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("AS_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("S_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+            animationController.SetFloat("WA_movement", -0.1f/*, 1f, Time.deltaTime * 10f*/);
+        }
+        else
+        {
+            // Debug.Log("no key pressed");
+            animationController.SetFloat("WD_movement", -0.2f, 1f, Time.deltaTime * 10f);
+            animationController.SetFloat("W_movement", -0.2f, 1f, Time.deltaTime * 10f);
+            animationController.SetFloat("D_movement", -0.2f, 1f, Time.deltaTime * 10f);
+            animationController.SetFloat("DS_movement", -0.2f, 1f, Time.deltaTime * 10f);
+            animationController.SetFloat("AS_movement", -0.2f, 1f, Time.deltaTime * 10f);
+            animationController.SetFloat("A_movement", -0.2f, 1f, Time.deltaTime * 10f);
+            animationController.SetFloat("S_movement", -0.2f, 1f, Time.deltaTime * 10f);
+            animationController.SetFloat("WA_movement", -0.2f, 1f, Time.deltaTime * 10f);
+        }
+
+
     }
     void characterMovement()
     {
-        //Debug.Log("character movement");
         if (audioCollider.isCrouched)
         {            
             movementSpeed = crouchMovementSpeed;

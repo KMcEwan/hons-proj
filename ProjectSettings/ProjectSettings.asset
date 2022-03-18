@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: Hons-3D
-  defaultCursor: {fileID: 2800000, guid: 0ae4945df4c4bf24ea62edb82c4bc340, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 4f15378b9bebc61469ac890735579457, type: 3}
   cursorHotspot: {x: 16, y: 16}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1

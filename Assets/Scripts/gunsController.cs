@@ -37,7 +37,7 @@ public class gunsController : MonoBehaviour
     float pistolFireNext = 0;
 
 
-    float SMGCooldown = 0.5f;
+    float SMGCooldown = 0.2f;
     float SMGFireNext = 0;
 
 
@@ -64,7 +64,24 @@ public class gunsController : MonoBehaviour
     [SerializeField] private GameObject uziGunTorch;
     [SerializeField] private GameObject pistolGunTorch;
 
-    // Update is called once per frame
+    // bool for cursor check
+    internal bool hasWeapon = false;
+
+
+    // audio for guns
+    [SerializeField] AudioClip pistolFire;
+    [SerializeField] AudioClip smgFire;
+    [SerializeField] AudioClip pistolReload;
+    [SerializeField] AudioClip smgReload;
+    [SerializeField] AudioClip emptyClip;
+    [SerializeField] AudioClip drawWeapon;
+
+    AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -79,7 +96,7 @@ public class gunsController : MonoBehaviour
             playerWeaponSelection(2);
         }
 
-        if(Input.GetKey(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R))
         {
             reloadGuns();
         }
@@ -110,6 +127,10 @@ public class gunsController : MonoBehaviour
         {
             if (hasPistol)
             {
+                if (!pistolActive)
+                {
+                    audioSource.PlayOneShot(drawWeapon);
+                }
                 noGunTorch.SetActive(false);
                 uziGunTorch.SetActive(false);
                 pistolGunTorch.SetActive(true);
@@ -120,12 +141,12 @@ public class gunsController : MonoBehaviour
                 SMGActive = false;
                 pistolObject.SetActive(true);
                 SMGObject.SetActive(false);
-                animationController.SetLayerWeight(0, 0);
-                animationController.SetLayerWeight(1, 1);
+                animationController.SetLayerWeight(0, 0);                   // standard movement layer
+                animationController.SetLayerWeight(1, 1);                   // arms with guns
                 animationController.SetBool("hasPistol", true);
                 animationController.SetBool("hasSMG", false);
                 pistolImage.GetComponent<Image>().color = Color.red;
-                SMGImage.GetComponent<Image>().color = Color.white;
+                SMGImage.GetComponent<Image>().color = Color.white;                
 
             }
 
@@ -134,7 +155,10 @@ public class gunsController : MonoBehaviour
         {
             if (hasSMG)
             {
-
+                if (!SMGActive)
+                {
+                    audioSource.PlayOneShot(drawWeapon);
+                }
                 noGunTorch.SetActive(false);
                 uziGunTorch.SetActive(true);
                 pistolGunTorch.SetActive(false);
@@ -151,6 +175,7 @@ public class gunsController : MonoBehaviour
                 animationController.SetBool("hasPistol", false);
                 pistolImage.GetComponent<Image>().color = Color.white;
                 SMGImage.GetComponent<Image>().color = Color.red;
+                
             }
 
         }
@@ -160,7 +185,7 @@ public class gunsController : MonoBehaviour
     {
         if (Time.time > pistolFireNext)
         {
-            if(PistolBulletsLeftInMag > 0)
+            if (PistolBulletsLeftInMag > 0)
             {
                 Debug.Log("pistol fire");
                 pistolFireNext = Time.time + pistolCooldown;
@@ -170,15 +195,20 @@ public class gunsController : MonoBehaviour
                     GameObject objectHit = playerScript.lastObjectHit.gameObject;
                     enemyScript = objectHit.GetComponent<enemyHealth>();
                     enemyScript.enemyMaxHealth -= 10;
-                    Debug.Log("enemy health : " + enemyScript.enemyMaxHealth);                   
+                    Debug.Log("enemy health : " + enemyScript.enemyMaxHealth);
                 }
-                PistolBulletsLeftInMag--;              
-                if(pistolBulletCount > 0)
+                PistolBulletsLeftInMag--;
+                audioSource.PlayOneShot(pistolFire);
+                if (pistolBulletCount > 0)
                 {
                     pistolBulletCount--;
                 }
                 Debug.Log("current pistol : " + PistolBulletsLeftInMag);
                 pistolAmmoCountTMP.text = PistolBulletsLeftInMag.ToString() + "/" + pistolBulletCount;
+            }
+            else
+            {
+                audioSource.PlayOneShot(emptyClip);
             }
            
         }
@@ -201,11 +231,16 @@ public class gunsController : MonoBehaviour
                 }
 
                 SMGBulletsLeftInMag--;
-                if(SMGBulletCount > 0)
+                audioSource.PlayOneShot(smgFire);
+                if (SMGBulletCount > 0)
                 {
                     SMGBulletCount--;
                 }
                 SMGAmmoCountTMP.text = SMGBulletsLeftInMag.ToString() + "/" + SMGBulletCount;
+            }
+            else
+            {
+                audioSource.PlayOneShot(emptyClip);
             }
 
 
@@ -230,7 +265,7 @@ public class gunsController : MonoBehaviour
                 PistolBulletsLeftInMag = pistolBulletCount;
                 pistolBulletCount -= pistolBulletCount;
             }
-
+            audioSource.PlayOneShot(pistolReload);
             pistolAmmoCountTMP.text = PistolBulletsLeftInMag.ToString() + "/" + pistolBulletCount;
         }
         else if (SMGActive)
@@ -246,6 +281,7 @@ public class gunsController : MonoBehaviour
                 SMGBulletsLeftInMag = SMGBulletCount;
                 SMGBulletCount -= SMGBulletCount;
             }
+            audioSource.PlayOneShot(smgReload);
             SMGAmmoCountTMP.text = SMGBulletsLeftInMag.ToString() + "/" + SMGBulletCount;
         }
     }
@@ -268,6 +304,12 @@ public class gunsController : MonoBehaviour
             pistolAmmoCountTMP.gameObject.SetActive(true);
             pistolAmmoCountTMP.text = PistolBulletsLeftInMag.ToString() + "/" + pistolBulletCount;
             Destroy(other.gameObject);
+
+
+            if(hasWeapon == false)
+            {
+                hasWeapon = true;
+            }
         }
         if (other.gameObject.tag == "gunTwo")
         {
@@ -277,6 +319,10 @@ public class gunsController : MonoBehaviour
             SMGAmmoCountTMP.gameObject.SetActive(true);
             SMGAmmoCountTMP.text = SMGBulletsLeftInMag.ToString() + "/" + SMGBulletCount;
             Destroy(other.gameObject);
+            if (hasWeapon == false)
+            {
+                hasWeapon = true;
+            }
         }
 
         if (other.gameObject.tag == "pistolAmmo")
@@ -285,6 +331,7 @@ public class gunsController : MonoBehaviour
             Debug.Log("pistol ammo collicion");
             pistolBulletCount += pistolAmmoSpawnCount;
             pistolAmmoCountTMP.text = PistolBulletsLeftInMag.ToString() + "/" + pistolBulletCount;
+            Destroy(other.gameObject);
         }
 
         if (other.gameObject.tag == "SMGAmmo")
@@ -293,6 +340,7 @@ public class gunsController : MonoBehaviour
             Debug.Log("smg ammo collicion");
             SMGBulletCount += SMGAmmoSpawnCount;
             SMGAmmoCountTMP.text = SMGBulletsLeftInMag.ToString() + "/" + SMGBulletCount;
+            Destroy(other.gameObject);
         }
     }
 

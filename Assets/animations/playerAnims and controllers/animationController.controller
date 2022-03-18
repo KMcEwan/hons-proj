@@ -189,9 +189,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.14998695
-  m_TransitionOffset: 0.0044997702
-  m_ExitTime: 0.0007970993
+  m_TransitionDuration: 0.02597619
+  m_TransitionOffset: 0.004499771
+  m_ExitTime: 0.000797099
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -214,9 +214,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.15126023
-  m_TransitionOffset: 0.0048837303
-  m_ExitTime: 0.0010356541
+  m_TransitionDuration: 0.023782184
+  m_TransitionOffset: 0.0048837275
+  m_ExitTime: 0.0010356538
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -583,9 +583,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.16265796
+  m_TransitionDuration: 0.033566162
   m_TransitionOffset: 0
-  m_ExitTime: 8.064816e-11
+  m_ExitTime: 8.294479e-11
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1285,9 +1285,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.16404375
+  m_TransitionDuration: 0.03339701
   m_TransitionOffset: 0
-  m_ExitTime: 0.000000001305317
+  m_ExitTime: 0.0000000012126135
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1876,9 +1876,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.16209158
-  m_TransitionOffset: 0.001532754
-  m_ExitTime: 0.00019446122
+  m_TransitionDuration: 0.030604014
+  m_TransitionOffset: 0.0015327575
+  m_ExitTime: 0.00019446126
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -2414,6 +2414,12 @@ AnimatorController:
   - m_Name: runMultiplier
     m_Type: 1
     m_DefaultFloat: 1
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: isCrouched
+    m_Type: 3
+    m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
@@ -3473,9 +3479,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.15947069
-  m_TransitionOffset: 0.0015652917
-  m_ExitTime: 0.0002436604
+  m_TransitionDuration: 0.031119863
+  m_TransitionOffset: 0.0015652925
+  m_ExitTime: 0.00024366051
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -4351,9 +4357,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.16153389
+  m_TransitionDuration: 0.03298334
   m_TransitionOffset: 0
-  m_ExitTime: 5.6487575e-11
+  m_ExitTime: 1.2440735e-10
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -5266,9 +5272,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.17146742
+  m_TransitionDuration: 0.033387482
   m_TransitionOffset: 0
-  m_ExitTime: 6.0409955e-11
+  m_ExitTime: 0.0000000014952604
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

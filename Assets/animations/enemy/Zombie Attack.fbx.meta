@@ -19,7 +19,12 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'mixamorig:LeftUpLeg'
+      : position error = 2.274508 mm\n\t'mixamorig:LeftLeg' : position error = 1.137164
+      mm\n\t'mixamorig:LeftFoot' : position error = 18.083612 mm\n\t'mixamorig:RightUpLeg'
+      : position error = 2.325858 mm\n\t'mixamorig:RightLeg' : position error = 1.186990
+      mm\n\t'mixamorig:RightFoot' : position error = 17.894228 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -58,7 +63,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.33104932
+        functionName: enableRightHandCollider
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: bc3460f43fa6a734f8b8aaeed3f7a13e, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4483627
+        functionName: disableRightHandCollider
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: bc3460f43fa6a734f8b8aaeed3f7a13e, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
