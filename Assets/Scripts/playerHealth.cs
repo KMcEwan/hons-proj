@@ -15,15 +15,24 @@ public class playerHealth : MonoBehaviour
 
     // text animation
     [SerializeField] private Animator healthAnimationController;
-
-
-    [SerializeField] float hitCooldown = 1.5f;
+    
+    [SerializeField] float hitCooldown = 0.0f;
     [SerializeField] float hitNext;
 
 
     // audio
     [SerializeField] AudioClip playerDamaged;
     AudioSource audioSource;
+
+    //player controller script for animation
+    [SerializeField] private playerController playerScript;
+
+
+    // medpack pick up
+    [SerializeField] AudioClip medpackPickUp;
+
+
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -37,8 +46,6 @@ public class playerHealth : MonoBehaviour
         {
             addHealth();
         }
-
-    
 
         //for debuggin purposes only
         if (Input.GetKeyDown(KeyCode.Alpha5))
@@ -70,7 +77,17 @@ public class playerHealth : MonoBehaviour
     }
     private void checkPlayerHealth()
     {
-        if(health <= 20)
+        Debug.Log("players health");
+        if (health <= 0)
+        {
+            health = 0;
+            healthCountUI.text = health.ToString();
+            playerScript.playerDead();
+
+        }
+
+
+        if (health <= 20)
         {
             healthAnimationController.SetBool("healthLessThan", true);
         }
@@ -87,13 +104,9 @@ public class playerHealth : MonoBehaviour
         {
             health = 100;
             healthCountUI.text = health.ToString();
+
         }
 
-        if(health <= 0)
-        {
-            health = 0;
-            healthCountUI.text = health.ToString();
-        }
     }
 
     void playerDamage()
@@ -115,16 +128,20 @@ public class playerHealth : MonoBehaviour
             medpackCount++;
             medpackCountUI.text = medpackCount.ToString();
             healthCountUI.text = health.ToString();
+            Destroy(other.gameObject);
+            audioSource.PlayOneShot(medpackPickUp);
         }
         else if(other.tag == "enemyHands")
         {
-            if(Time.time > hitNext)
+            //Debug.Log("enemy hit");
+            if (Time.time > hitNext)
             {
                 hitNext = Time.time + hitCooldown;
-                Debug.Log("enemy hit");
+      
+                Debug.Log(other.name);
                 health -= 10;
                 healthCountUI.text = health.ToString();
-                if(!audioSource.isPlaying)
+                if(!audioSource.isPlaying && !playerScript.isDead)
                 {
                     audioSource.PlayOneShot(playerDamaged);
                 }
@@ -133,5 +150,14 @@ public class playerHealth : MonoBehaviour
         }
 
 
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("exit");
+        if(other.tag == "enemyHands")
+        {
+            Debug.Log("exiting enemy hands");
+        }
     }
 }

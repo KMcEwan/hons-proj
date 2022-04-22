@@ -53,20 +53,43 @@
     <UnityVersion>2020.3.24f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\loading\loadingScenes.cs" />
+    <Compile Include="Assets\Scripts\distributeKey.cs" />
+    <Compile Include="Assets\Scripts\sceneRes.cs" />
+    <Compile Include="Assets\Scripts\gameStartPlay.cs" />
+    <Compile Include="Assets\Scripts\fading.cs" />
     <Compile Include="Assets\Scripts\playerHealth.cs" />
     <Compile Include="Assets\Scripts\playerController.cs" />
+    <Compile Include="Assets\Scripts\startScreen\dontDestroyMusic.cs" />
+    <Compile Include="Assets\Scripts\followPlayerScript.cs" />
     <Compile Include="Assets\UnityStore\TransparencyCapture\example\zzTransparencyCaptureExample.cs" />
     <Compile Include="Assets\Scripts\enemyHealth.cs" />
     <Compile Include="Assets\Scripts\gunsController.cs" />
     <Compile Include="Assets\Scripts\clockController.cs" />
+    <Compile Include="Assets\Scripts\spawnZombies.cs" />
+    <Compile Include="Assets\Scripts\map.cs" />
+    <Compile Include="Assets\Scripts\startScreen\audioController.cs" />
+    <Compile Include="Assets\Scripts\startScreen\changeScene.cs" />
+    <Compile Include="Assets\Scripts\loading\loadingScenesSmall.cs" />
+    <Compile Include="Assets\Scripts\enemyCurrentPosition.cs" />
+    <Compile Include="Assets\Scripts\helicopter.cs" />
+    <Compile Include="Assets\Scripts\openGate.cs" />
     <Compile Include="Assets\UnityStore\TransparencyCapture\TransparencyCaptureToFile.cs" />
     <Compile Include="Assets\Scripts\enemyAudioCollision.cs" />
+    <Compile Include="Assets\Scripts\urpUsed.cs" />
+    <Compile Include="Assets\Scripts\searchDead.cs" />
+    <Compile Include="Assets\Scripts\volumeController.cs" />
+    <Compile Include="Assets\Scripts\screenResFull.cs" />
     <Compile Include="Assets\Scripts\enemyMovement.cs" />
+    <Compile Include="Assets\Scripts\gameController.cs" />
+    <Compile Include="Assets\Scripts\reload.cs" />
     <Compile Include="Assets\Scripts\audioColliderForCollision.cs" />
     <Compile Include="Assets\Scripts\cameraController.cs" />
     <Compile Include="Assets\UnityStore\TransparencyCapture\zzTransparencyCapture.cs" />
+    <Compile Include="Assets\Scripts\closeNote.cs" />
     <Compile Include="Assets\Scripts\cameraFollow.cs" />
-    <Compile Include="Assets\Scripts\enemyCurrentPosition.cs" />
+    <Compile Include="Assets\Scripts\fadeIn.cs" />
+    <Compile Include="Assets\Scripts\deactivateColliderOfEnemyHand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -74,6 +97,8 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\UnityStore\Attack Helicopter2\MI24 info.txt" />
+    <None Include="Assets\UnityStore\laxer tree pkg\README.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\UnityStore\TransparencyCapture\readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />

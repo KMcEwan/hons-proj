@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/mainMenu.unity
+    guid: 4b6cf404517431f4c816872d3a5c1e0c
+  - enabled: 1
+    path: Assets/Scenes/fullscreens/loadingScene.unity
+    guid: 859c5a9de78b00a48a439d58bef0ac70
+  - enabled: 1
+    path: Assets/Scenes/fullscreens/mainGameScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/smallScreen/loadingSceneSmall.unity
+    guid: 4b699f5d992c794458e4a09339d33775
+  - enabled: 1
+    path: Assets/Scenes/smallScreen/SmallGame.unity
+    guid: 64b04ffc4212bfa4dab94a9e4377a04f
   m_configObjects: {}

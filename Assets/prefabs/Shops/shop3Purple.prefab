@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6087652461400033819}
   - component: {fileID: 8331475559181254353}
   - component: {fileID: 5399605122457481313}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shop3Purple
   m_TagString: stationary
   m_Icon: {fileID: 0}

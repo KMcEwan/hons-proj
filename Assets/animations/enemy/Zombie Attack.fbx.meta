@@ -44,7 +44,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 79
+      lastFrame: 53
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -66,13 +66,6 @@ ModelImporter:
       events:
       - time: 0.33104932
         functionName: enableRightHandCollider
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: bc3460f43fa6a734f8b8aaeed3f7a13e, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.4483627
-        functionName: disableRightHandCollider
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: bc3460f43fa6a734f8b8aaeed3f7a13e, type: 3}
         floatParameter: 0

@@ -16,6 +16,17 @@ TagManager:
   - groundObjects
   - concrete
   - enemyHands
+  - hospitalGate
+  - armyDead
+  - searchUI
+  - mainMenuAudio
+  - zoneOne
+  - zoneTwo
+  - zoneThree
+  - zoneFour
+  - zoneFive
+  - zoneSix
+  - playerAudioCollider
   layers:
   - Default
   - TransparentFX
@@ -30,8 +41,8 @@ TagManager:
   - interactiveObjects
   - enemyHitPlayer
   - enemyLayerOnly
-  - 
-  - 
+  - dead
+  - plane
   - 
   - 
   - 

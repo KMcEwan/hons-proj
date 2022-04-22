@@ -22,7 +22,7 @@ public class enemyAudioCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("player sound detection");
-        enemyMovementScript.playerDetected = true;
+        //Debug.Log("player sound detection");
+        //enemyMovementScript.playerDetected = true;
     }
 }
